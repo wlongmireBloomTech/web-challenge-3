@@ -121,8 +121,16 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. Explain what a token is used for.
 
+Tokens are randomly generated strings that are given to users via an API upon proper verification. They're used for security purposes to only allow users with the appropriate token to be able to view particular pages/data on an app/site, which I believe is typically verified by comparing the user's token to the corresponding token stored in the API being used.
+
 2. What steps can you take in your web apps to keep your data secure?
+
+Using JSON Web Tokens or other forms of tokens as a form of client authentication I believe is a good way of keeping your data secure. I assume that the tokens needed by users to access particular pages/data in real life are more safely stored thoroughly checked compared to storing them in local storage and simply checking if it exists as we did in class, though right now I'm not familiar with how exactly that process works.
 
 3. Describe how web servers work.
 
+At its most basic, computers act as servers to hold all the logic and data needed to display our apps and web pages, but the software in those computers in turn receive requests from other computers--the users--then retrieve the proper data according to the request and send that data back to the user to view and use.
+
 4. Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+
+To Create, we can use either PUT or POST, to Read, we use GET, to Update, we use PUT, and to Delete, we use DELETE.

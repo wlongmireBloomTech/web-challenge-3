@@ -1,12 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 const Login = () => {
-    
+    const history = useHistory();
+    const initialState = {
+        username: '',
+        password: '',
+        error: ''
+    }
+
+    const [credentials, setCredentials] = useState(initialState);
+
+    const handleChange = (e) => {
+        setCredentials({
+            ...credentials,
+            [e.target.id]: e.target.value
+        })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(credentials);
+        axios.post('http://localhost:5000/api/login', credentials)
+            .then((resp) => {
+                console.log(resp);
+                const { token, role, username } = resp.data;
+                localStorage.setItem('token', token);
+                localStorage.setItem('role', role);
+                localStorage.setItem('username', username);
+                history.push('/view');
+            })
+            .catch((err) => {
+                console.log(err);
+                setCredentials({
+                    ...credentials,
+                    error: 'Incorrect username/password.'
+                })
+            })
+    }
+
     return(<ComponentContainer>
         <ModalContainer>
             <h1>Welcome to Blogger Pro</h1>
             <h2>Please enter your account information.</h2>
+            <FormGroup onSubmit={handleSubmit}>
+                <Label>Username:</Label>
+                <Input id='username' type='text' onChange={handleChange} />
+                <Label>Password:</Label>
+                <Input id='password' type='password' onChange={handleChange} />
+                <Button id='submit'>Click to Login</Button>
+            </FormGroup>
+            <p id='error'>{credentials.error}</p>
         </ModalContainer>
     </ComponentContainer>);
 }
@@ -49,9 +95,11 @@ const Input = styled.input`
     font-size: 1rem;
     padding: 1rem 0;
     width:100%;
+    margin-bottom: 10px;
 `
 
 const Button = styled.button`
     padding:1rem;
     width: 100%;
+    margin-top: 15px;
 `
