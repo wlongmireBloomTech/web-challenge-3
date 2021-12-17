@@ -8,7 +8,7 @@ This is an individual assessment. All work must be your own. All projects will b
 
 You are not allowed to collaborate during the sprint challenge.
 
-## Introduction
+## Introduction 
 
 In this challenge you will create a login page and request a token from the server that you'll use to send all other requests to the server. You will then be able to fetch the article data array, update data, and delete data.
 
