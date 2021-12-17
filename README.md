@@ -17,7 +17,7 @@ In this challenge you will create a login page and request a token from the serv
 [ ]  Run npm start to run your frontend and backend code automatically.
 [ ]  Note your backend code will run automatically when your run npm start. There is no need to seperately run a server.js file and no means to test the server through postman or the browser. Feel free to ignore any messages related to MSW or mock service workers.
 
-## Project Instructions
+## Project Instructions 
 In this project, you will demonstrate your mastery of these skills by creating **a login page** and **basic CRUD application.** You will implement basic security using **token authentication** and build private routes within the application.
 
 ### API Documentation
