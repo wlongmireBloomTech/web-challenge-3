@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
@@ -10,6 +10,16 @@ const Login = () => {
         password: '',
         error: ''
     }
+
+    useEffect(() => {
+        axios.get('http://localhost:5000/api/articles')
+            .then((resp) => {
+                console.log(resp);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }, [])
 
     const [credentials, setCredentials] = useState(initialState);
 
